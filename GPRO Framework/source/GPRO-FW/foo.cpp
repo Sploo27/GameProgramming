@@ -1,7 +1,15 @@
 //definition for our foo function
-
+#include "foo.h"
 //definition/implemenation
-int foo(int bar)
+
+
+bool foo(int num)
 {
-	return (bar + 1);
+	int correctNum = 8;
+	if (num == correctNum) {
+		return false;
+	}
+	else {
+		return true;
+	}
 }
