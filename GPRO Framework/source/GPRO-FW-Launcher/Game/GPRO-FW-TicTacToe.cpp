@@ -1,5 +1,9 @@
 
 #include <stdio.h>
+#include <iomanip>
+#include <iostream>
+#include <string>
+using namespace std;
 
 
 //-----------------------------------------------------------------------------
@@ -8,6 +12,8 @@
 #define GS_TICTACTOE_PLAYERS					2
 #define GS_TICTACTOE_BOARD_WIDTH				3
 #define GS_TICTACTOE_BOARD_HEIGHT				3
+
+
 
 enum gs_tictactoe_space_state
 {
@@ -21,7 +27,7 @@ enum gs_tictactoe_space_state
 };
 #ifndef __cplusplus
 typedef		enum gs_tictactoe_space_state		gs_tictactoe_space_state;
-#endif	// !__cplusplus
+#endif //!__cplusplus
 
 // tic-tac-toe game state
 typedef		unsigned char						gs_tictactoe_index;
@@ -60,16 +66,65 @@ inline gs_tictactoe_index gs_tictactoe_reset(gs_tictactoe game)
 //-----------------------------------------------------------------------------
 // DEFINITIONS
 
+
+void tictactoeInput(gs_tictactoe game, int count)
+{
+	int row, column;
+	cout << "Enter you row and column(space between): ";
+	cin >> row;
+	cin >> column;
+
+	if (count % 2 == 0) {
+		gs_tictactoe_setSpaceState(game, gs_tictactoe_space_o, row, column);
+	}
+	else {
+		gs_tictactoe_setSpaceState(game, gs_tictactoe_space_x, row, column);
+	}
+
+}
+
+void tictactoeLogic(gs_tictactoe game)
+{
+	// do game logic/state update
+
+
+}
+
+void tictactoeDisplay(gs_tictactoe const game)
+{
+	cout << "Current board:" << endl;
+	for (int i = 0; i < 3; i++) {
+		for (int j = 0; j < 3; j++) {
+			cout << gs_tictactoe_getSpaceState(game, i, j) << " ";
+		}
+		cout << endl;
+	}
+}
+
+
 int launchTicTacToe()
 {
-	gs_tictactoe game = { 0 };
+	gs_tictactoe game;// = { 0 };
 
 	gs_tictactoe_reset(game);
 
+	//MAKE TIC-TAC-TOE
+	//input
+	//logic
+	//display
+	int playing = 1;
+	while (playing)
+	{
+		tictactoeDisplay(game);
+		tictactoeInput(game);
+		tictactoeLogic(game);
+	}
 
 
 	return 0;
 }
+
+
 
 
 //-----------------------------------------------------------------------------
